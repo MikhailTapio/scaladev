@@ -1,7 +1,6 @@
 package com.plr.scaladev
 
 import java.util.Scanner
-import scala.util.control.Breaks
 
 object Main {
 
@@ -15,6 +14,8 @@ object Main {
       selection match {
         case 1 =>
           CurseforgeRewardCalculation.input(scanner)
+        case 2 =>
+          LovedOne.input(scanner)
         case 0 => selection = -1
         case _ =>
           showCategories()
@@ -27,6 +28,7 @@ object Main {
   def showCategories(): Unit ={
     println("输入序号以使用功能")
     println("1. Curseforge 点数奖励价值评估系统")
+    println("2. 录入一个虚拟恋人")
     println("0. 退出程序")
   }
 }
