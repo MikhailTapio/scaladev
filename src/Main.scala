@@ -1,6 +1,6 @@
 package com.plr.scaladev
 
-import com.plr.scaladev.tools.{CurseforgeRewardCalculation, LovedOne, RationalFractionCalculator}
+import tools.{CurseforgeRewardCalculation, LovedOne, RationalFractionCalculator}
 
 import java.util.Scanner
 
