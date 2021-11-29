@@ -18,7 +18,7 @@ object RationalFractionCalculator {
     val numerator_b = scanner.nextLong()
     println("请输入第二个分数的分母（接受整数）")
     val denominator_b = scanner.nextLong()
-    println("请输入两个分数之间的运算符（接受“+”、“-”、“*”、“/”）")
+    println("请输入两个分数之间的运算符（接受“+”、“-”、“*”、“/”），输入abort则取消运算并回到主页面")
     while(continue) {
       val n = scanner.next()
       n match {
@@ -41,6 +41,9 @@ object RationalFractionCalculator {
           val r = FractionalMND.input(numerator_a,denominator_a,numerator_b,denominator_b,isMultiply = true)
           println(text)
           println(FractionalRedactAndOutput.input(r))
+          continue = false
+        case "abort" =>
+          println("运算已取消...")
           continue = false
         case _ =>
           continue = true
