@@ -1,11 +1,11 @@
 package com.plr.scaladev
+package tools
 
 import java.util.Scanner
-import scala.language.postfixOps
 
 object CurseforgeRewardCalculation {
 
-  def input(scanner:Scanner): Unit ={
+  def input(scanner: Scanner): Unit = {
     println("欢迎使用 Curseforge 点数奖励价值评估系统")
     println("请输入兑换方案 A 需要的点数")
     val aCost = scanner.nextInt()
@@ -30,7 +30,7 @@ object CurseforgeRewardCalculation {
                                   bNeededPts: Int,
                                   bGainsCurrency: Int,
                                   bRespectiveCurrencyToRMB: Double
-                                 ): String ={
+                                 ): String = {
     if (aGainsCurrency * aRespectiveCurrencyToRMB / aNeededPts >= bGainsCurrency * bRespectiveCurrencyToRMB / bNeededPts)
       "A方案更划算，平均每pt兑换%f人民币".format(aGainsCurrency * aRespectiveCurrencyToRMB / aNeededPts)
     else

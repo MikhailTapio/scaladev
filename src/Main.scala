@@ -1,5 +1,7 @@
 package com.plr.scaladev
 
+import com.plr.scaladev.tools.{CurseforgeRewardCalculation, LovedOne, RationalFractionCalculator}
+
 import java.util.Scanner
 
 object Main {
@@ -14,8 +16,13 @@ object Main {
       selection match {
         case 1 =>
           CurseforgeRewardCalculation.input(scanner)
+          showCategories()
         case 2 =>
           LovedOne.input(scanner)
+          showCategories()
+        case 3 =>
+          RationalFractionCalculator.input(scanner)
+          showCategories()
         case 0 => selection = -1
         case _ =>
           showCategories()
@@ -29,6 +36,7 @@ object Main {
     println("输入序号以使用功能")
     println("1. Curseforge 点数奖励价值评估系统")
     println("2. 录入一个虚拟恋人")
+    println("3. 进行简单分数运算")
     println("0. 退出程序")
   }
 }
