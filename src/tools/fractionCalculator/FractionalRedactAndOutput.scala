@@ -3,19 +3,22 @@ package tools.fractionCalculator
 
 object FractionalRedactAndOutput {
   def input(f:(Long,Long)): String ={
-    if(f._1 % f._2 == 0 || f._2 % f._1 == 0) {
-      val factor = if (f._1 >= f._2 ) f._1 / f._2 else f._2 / f._1
-      if (f._1 >= f._2) s"$factor" else s"1 / $factor"
+    val isPositive = f._1 * f._2 >= 0
+    val a = f._1.abs
+    val b = f._2.abs
+    if(a % b == 0 || b % a == 0) {
+      val factor = if (a >= b ) a / b else b / a
+      (if (isPositive) "" else "- ") + (if (a >= b) s"$factor" else s"1 / $factor")
     }
     else{
-      var actualA = if(f._1>=f._2) f._1 else f._2
-      var actualB = if(f._1>=f._2) f._2 else f._1
+      var actualA = if(a>=b) a else b
+      var actualB = if(a>=b) b else a
       while (actualA % actualB != 0) {
         val tmpA = actualA
         actualA = actualB
         actualB = tmpA % actualB
       }
-      s"${f._1 / actualB} / ${f._2 / actualB}"
+      (if (isPositive) "" else "- ") + s"${a / actualB} / ${b / actualB}"
     }
   }
 }
