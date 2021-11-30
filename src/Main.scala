@@ -3,33 +3,35 @@ package com.plr.scaladev
 import tools.{CurseforgeRewardCalculation, LovedOne, RationalFractionCalculator}
 
 import java.util.Scanner
+import scala.annotation.tailrec
 
 object Main {
 
   def main(args: Array[String]): Unit = {
     println("欢迎使用 Tapio 的工具集！")
     val scanner = new Scanner(System.in)
-    showCategories()
-    var selection = 0
-    while (selection >= 0) {
-      selection = if (scanner.hasNextInt()) scanner.nextInt() else 0
-      selection match {
-        case 1 =>
-          CurseforgeRewardCalculation.input(scanner)
-          showCategories()
-        case 2 =>
-          LovedOne.input(scanner)
-          showCategories()
-        case 3 =>
-          RationalFractionCalculator.input(scanner)
-          showCategories()
-        case 0 => selection = -1
-        case _ =>
-          showCategories()
-          selection = 0
-      }
-    }
+    select(scanner)
     scanner.close()
+  }
+
+  @tailrec
+  def select(scanner:Scanner): Unit ={
+    showCategories()
+    val selection = if (scanner.hasNextInt()) scanner.nextInt() else 0
+    selection match {
+      case 1 =>
+        CurseforgeRewardCalculation.input(scanner)
+        select(scanner)
+      case 2 =>
+        LovedOne.input(scanner)
+        select(scanner)
+      case 3 =>
+        RationalFractionCalculator.input(scanner)
+        select(scanner)
+      case 0 =>
+      case _ =>
+        select(scanner)
+    }
   }
 
   def showCategories(): Unit ={
